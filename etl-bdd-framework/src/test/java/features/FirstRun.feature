@@ -17,7 +17,7 @@
 ## (Comments)
 #Sample Feature Definition Template
 
-#test1
+#test
 
 @TestRun
 
