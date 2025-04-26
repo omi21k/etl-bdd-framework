@@ -18,7 +18,7 @@
     <scope>test</scope>
 </dependency>
 
-<!-- Cucumber Java -->
+<!-- Cucumber Java dependacy-->
 <dependency>
     <groupId>io.cucumber</groupId>
     <artifactId>cucumber-java</artifactId>
