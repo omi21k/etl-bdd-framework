@@ -21,8 +21,14 @@ public class ETL_Steps {
         sourceCount = countValidation.getCount("SELECT COUNT(*) FROM EMPLOYEES");
         targetCount = countValidation.getCount("SELECT COUNT(*) FROM EMPLOYEES");
     
-        System.out.println("Source count " + sourceCount);
-        System.out.println("Source count " + targetCount);
+        System.out.println("Source employee count " + sourceCount);
+        System.out.println("Source employee count " + targetCount);
+        
+        sourceCount = countValidation.getCount("SELECT COUNT(*) FROM DEPARTMENTS");
+        targetCount = countValidation.getCount("SELECT COUNT(*) FROM DEPARTMENTS");
+    
+        System.out.println("Source department count " + sourceCount);
+        System.out.println("Source department count " + targetCount);
     }
 
     @Then("the record counts should match")
