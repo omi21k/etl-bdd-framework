@@ -3,30 +3,30 @@ package utilities;
 import java.sql.*;
 
 public class DBUtils {
+	
+	
+	static DBCredentials sourceDB;
 
-    public static int getCount(String query, String dbUrl, String user, String pass) {
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+	static String dbUrl;
+	static String user;
+	static String pass;
 
-            try (Connection conn = DriverManager.getConnection(dbUrl, user, pass);
-                 Statement stmt = conn.createStatement();
-                 ResultSet rs = stmt.executeQuery(query)) {
+	static {
+	    sourceDB = DBUtils.getDBCredFromConfig(true);
+	    dbUrl = sourceDB.getDbUrl();
+	    user = sourceDB.getUsername();
+	    pass = sourceDB.getPassword();
+	}
 
-                if (rs.next()) return rs.getInt(1);
+	// Now you can use dbUrl, username, password wherever needed!
 
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return -1;
-    }
 
-    // Optional: Overloaded method using config
-    public static int getDBCredFromConfig(String query, boolean useSource) {
+    public static DBCredentials getDBCredFromConfig(boolean useSource) {
         String dbUrl = useSource ? ConfigReader.get("source.db.url") : ConfigReader.get("target.db.url");
         String user = ConfigReader.get("db.username");
         String pass = ConfigReader.get("db.password");
 
-        return getCount(query, dbUrl, user, pass);
+        return new DBCredentials(dbUrl, user, pass);
     }
+
 }

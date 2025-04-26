@@ -24,9 +24,9 @@
 Feature: ETL Data Validation
 
   @TestRun
-  Scenario: Validate source and target row count
+  Scenario: Validate the source and target DB count
     Given I have source and target DB connections
     When I fetch record count from source and target tables
-    Then the record counts should match it
+    Then the record counts should match
 
  
