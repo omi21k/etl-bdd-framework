@@ -24,12 +24,10 @@ Feature: Title of your feature
   @smoketest
   Scenario Outline: Validate the source and target DB count of HR schema
     Given I have source and target HR DB connections
-    When I fetch record count from "<source_query>" and "<target_query>" tables
+    When I fetch record count from "<table_name>" table by running "<source_query>" and "<target_query>" queries
     Then the record counts should match of given tables.
 
     Examples: 
-      | source_query         | target_query         |
-      | Employee_count.sql   | Employee_count.sql   |
-      | Department_count.sql | Department_count.sql |
-
-
+      | table_name  | source_query         | target_query         |
+      | Employees   | Employee_count.sql   | Employee_count.sql   |
+      | Departments | Department_count.sql | Department_count.sql |
