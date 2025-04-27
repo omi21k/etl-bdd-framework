@@ -16,17 +16,20 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-
 #test
+@tag
+Feature: Title of your feature
+  I want to use this template for my feature file
 
-@TestRun
+  @smoketest
+  Scenario Outline: Validate the source and target DB count of HR schema
+    Given I have source and target HR DB connections
+    When I fetch record count from "<source_query>" and "<target_query>" tables
+    Then the record counts should match of given tables.
 
-Feature: ETL Data Validation
+    Examples: 
+      | source_query         | target_query         |
+      | Employee_count.sql   | Employee_count.sql   |
+      | Department_count.sql | Department_count.sql |
 
-  @TestRun
-  Scenario: Validate the source and target DB count
-    Given I have source and target DB connections
-    When I fetch record count from source and target tables
-    Then the record counts should match
 
- 
